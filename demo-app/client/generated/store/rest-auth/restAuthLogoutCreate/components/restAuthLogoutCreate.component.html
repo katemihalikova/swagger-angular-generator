@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>RestAuth</mat-card-title>
+
+    <mat-card-content>
+      <div class='row'>
+        <div class='col-12'>
+
+          <form [formGroup]='restAuthLogoutCreateFormService.form' (ngSubmit)='restauth()' class='full-width'>
+
+        </form>
+
+        <button mat-raised-button color='primary' type='submit' [disabled]='restAuthLogoutCreateFormService.form.invalid'>
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

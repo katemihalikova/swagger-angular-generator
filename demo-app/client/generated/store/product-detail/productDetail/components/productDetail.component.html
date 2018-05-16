@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-title>ProductDetail</mat-card-title>
+
+    <mat-card-content>
+      <div class='row'>
+        <div class='col-12'>
+
+          <form [formGroup]='productDetailFormService.form' (ngSubmit)='productdetail()' class='full-width'>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='productId' [formControl]='productId' placeholder="productId" />
+                    <mat-error *ngIf="productId.hasError('required')">This field is required</mat-error>
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+        </form>
+
+        <button mat-raised-button color='primary' type='submit' [disabled]='productDetailFormService.form.invalid'>
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

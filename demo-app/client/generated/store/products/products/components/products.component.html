@@ -1,0 +1,117 @@
+<mat-card>
+  <mat-card-title>Products</mat-card-title>
+
+    <mat-card-content>
+      <div class='row'>
+        <div class='col-12'>
+
+          <form [formGroup]='productsFormService.form' (ngSubmit)='products()' class='full-width'>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='stringField' [formControl]='stringField' placeholder="stringField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='BooleanField' [formControl]='BooleanField' placeholder="BooleanField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='int32Field' [formControl]='int32Field' placeholder="int32Field" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='longField' [formControl]='longField' placeholder="longField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='floatField' [formControl]='floatField' placeholder="floatField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='doubleField' [formControl]='doubleField' placeholder="doubleField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='byteField' [formControl]='byteField' placeholder="byteField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='binaryField' [formControl]='binaryField' placeholder="binaryField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='dateField' [formControl]='dateField' placeholder="dateField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class='row'>
+              <div class='col-12'>
+
+                  <mat-form-field class='account-form-full-width'>
+                    <input matInput type='text' name='dateTimeField' [formControl]='dateTimeField' placeholder="dateTimeField" />
+                  </mat-form-field>
+
+              </div>
+            </div>
+
+        </form>
+
+        <button mat-raised-button color='primary' type='submit' [disabled]='productsFormService.form.invalid'>
+
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -4,6 +4,8 @@ const _ = require("lodash");
 const path = require("path");
 const conf = require("../conf");
 const utils_1 = require("../utils");
+const angular_maetrial_component_ts_1 = require("./components/angular-material/angular-maetrial-component-ts");
+const angular_material_component_html_1 = require("./components/angular-material/angular-material-component-html");
 // TODO! rename
 const generate_form_service_1 = require("./generate-form-service");
 const process_module_1 = require("./process-module");
@@ -35,7 +37,9 @@ function createForms(config, name, processedMethods, definitions) {
         }
         // states
         const statesDirName = path.join(formSubDirName, conf.stateDir);
+        const componentsDirName = path.join(formSubDirName, conf.componentsDir);
         utils_1.createDir(statesDirName);
+        utils_1.createDir(componentsDirName);
         // actions.ts
         generate_http_actions_1.generateHttpActions(config, name, responseDef, actionClassNameBase, simpleName, formSubDirName, formParams);
         // reducers.ts
@@ -46,6 +50,8 @@ function createForms(config, name, processedMethods, definitions) {
         shared_module_1.createSharedModule(config);
         // module.ts
         process_module_1.createModule(config, name, actionClassNameBase, formSubDirName, simpleName, className, generateForms);
+        angular_maetrial_component_ts_1.createComponentTs(config, name, simpleName, formSubDirName, className);
+        angular_material_component_html_1.createComponentHTML(config, name, formParams, definitions, formSubDirName, simpleName);
     }
 }
 exports.createForms = createForms;

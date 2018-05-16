@@ -330,6 +330,34 @@
         }
       }
     },
+    "/login-two/": {
+      "post": {
+        "operationId": "rest-auth_login_create",
+        "description": "Check the credentials and return the REST Token\nif the credentials are valid and authenticated.\nCalls Django Auth login method to register User ID\nin Django session framework\n\nAccept the following POST parameters: username, password\nReturn the REST Framework Token Object's key.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        },
+        "tags": [
+          "rest-auth"
+        ]
+      },
+      "parameters": []
+    },
     "/registration/{registrationType}": {
       "post": {
         "tags": [
@@ -604,6 +632,27 @@
         "offset": {
           "format": "int32",
           "type": "integer"
+        }
+      }
+    },
+    "Login": {
+      "required": [
+        "password"
+      ],
+      "type": "object",
+      "properties": {
+        "username": {
+          "title": "Username",
+          "type": "string"
+        },
+        "email": {
+          "title": "Email",
+          "type": "string",
+          "format": "email"
+        },
+        "password": {
+          "title": "Password",
+          "type": "string"
         }
       }
     },

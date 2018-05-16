@@ -7,6 +7,8 @@ import {Config} from '../generate';
 import {MethodOutput} from '../requests/requests.models';
 import {Parameter} from '../types';
 import {createDir} from '../utils';
+import {createComponentTs} from './components/angular-material/angular-maetrial-component-ts';
+import {createComponentHTML} from './components/angular-material/angular-material-component-html';
 // TODO! rename
 import {generateFormService} from './generate-form-service';
 import {createModule} from './process-module';
@@ -45,7 +47,9 @@ export function createForms(config: Config, name: string, processedMethods: Meth
 
     // states
     const statesDirName = path.join(formSubDirName, conf.stateDir);
+    const componentsDirName = path.join(formSubDirName, conf.componentsDir);
     createDir(statesDirName);
+    createDir(componentsDirName);
 
     // actions.ts
     generateHttpActions(config, name, responseDef, actionClassNameBase, simpleName, formSubDirName, formParams);
@@ -57,5 +61,10 @@ export function createForms(config: Config, name: string, processedMethods: Meth
     createSharedModule(config);
     // module.ts
     createModule(config, name, actionClassNameBase, formSubDirName, simpleName, className, generateForms);
+
+    createComponentTs(config, name, simpleName, formSubDirName, className);
+
+    createComponentHTML(config, name, formParams, definitions,
+         formSubDirName, simpleName);
   }
 }

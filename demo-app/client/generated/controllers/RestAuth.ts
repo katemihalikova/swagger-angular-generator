@@ -11,6 +11,10 @@ import {Observable} from 'rxjs/Observable';
 
 import * as __model from '../model';
 
+export interface LoginTwoParams {
+  data: __model.Login;
+}
+
 export interface RestAuthUserUpdateParams {
   data: __model.UserDetails;
 }
@@ -22,6 +26,28 @@ export interface RestAuthUserPartialUpdateParams {
 @Injectable()
 export class RestAuthService {
   constructor(private http: HttpClient) {}
+
+  /**
+   * Check the credentials and return the REST Token
+   * if the credentials are valid and authenticated.
+   * Calls Django Auth login method to register User ID
+   * in Django session framework
+   *
+   * Accept the following POST parameters: username, password
+   * Return the REST Framework Token Object's key.
+   * http://example.com/swagger/swagger-ui.html#!/rest-auth/rest-auth_login_create
+   */
+  loginTwo(params: LoginTwoParams): Observable<__model.Login> {
+    const bodyParams = params.data;
+    const bodyParamsWithoutUndefined: any = {};
+    Object.entries(bodyParams || {}).forEach(([key, value]) => {
+      if (value !== undefined) bodyParamsWithoutUndefined[key] = value;
+    });
+    return this.http.post<__model.Login>(`/api-base-path/login-two/`, bodyParamsWithoutUndefined);
+  }
+  loginTwo_(data: __model.Login): Observable<__model.Login> {
+    return this.loginTwo({data});
+  }
 
   /**
    * Calls Django logout method and delete the Token object
